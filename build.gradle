@@ -1,17 +1,18 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        kotlinVersion = '1.4.0'
+        kotlinVersion = '1.6.10'
         navigationVersion = '2.3.0'
-        hiltVersion = '2.28.3-alpha'
+        hiltVersion = '2.42'
     }
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.0.1"
+        classpath "com.android.tools.build:gradle:7.0.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
 
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
@@ -32,9 +33,9 @@ task clean(type: Delete) {
 // Define versions in a single place
 ext {
     // Sdk and tools
-    minSdkVersion = 21
-    targetSdkVersion = 29
-    compileSdkVersion = 29
+    minSdkVersion = 24
+    targetSdkVersion = 31
+    compileSdkVersion = 31
 
     // App dependencies
     appCompatVersion = '1.2.0'
@@ -47,4 +48,5 @@ ext {
     pagingVersion = '3.1.1'
     retrofitVersion = '2.9.0'
     testExtJunitVersion = '1.1.1'
+    ktor_version = '1.6.3'
 }

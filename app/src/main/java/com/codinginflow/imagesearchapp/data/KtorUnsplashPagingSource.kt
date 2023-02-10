@@ -4,13 +4,18 @@ import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.codinginflow.imagesearchapp.api.UnsplashApi
+import com.codinginflow.imagesearchapp.api.UnsplashApi.Companion.BASE_HOST
+import com.codinginflow.imagesearchapp.api.UnsplashApi.Companion.BASE_URL
 import com.codinginflow.imagesearchapp.api.UnsplashApi.Companion.UNSPLASH_STARTING_PAGE_INDEX
+import com.codinginflow.imagesearchapp.api.UnsplashResponse
+import io.ktor.client.*
+import io.ktor.client.request.*
+import io.ktor.http.*
 import retrofit2.HttpException
 import java.io.IOException
 
-
-class UnsplashPagingSource(
-    private val unsplashApi: UnsplashApi,
+class KtorUnsplashPagingSource(
+    private val httpClient: HttpClient,
     private val query: String
 ) : PagingSource<Int, UnsplashPhoto>() {
 
@@ -19,7 +24,24 @@ class UnsplashPagingSource(
 
         return try {
             Log.d("nikTest", "query: $query page: $position per_page: ${params.loadSize}")
-            val response = unsplashApi.searchPhotos(query, position, params.loadSize)
+            val response = httpClient.get<UnsplashResponse> {
+                url{
+                    protocol=URLProtocol.HTTPS
+                    host=BASE_HOST
+                    path("search/photos")
+                    parameters.append("query",query)
+                    parameters.append("page",position.toString())
+                    parameters.append("per_page",params.loadSize.toString())
+
+                }
+                contentType(ContentType.Application.Json)
+                headers{
+                    append("Accept-Version", "v1")
+                    append( "Authorization", "Client-ID ${UnsplashApi.CLIENT_ID}")
+
+                }
+
+            }
             val photos = response.results
 
             LoadResult.Page(
