@@ -5,7 +5,6 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.codinginflow.imagesearchapp.api.UnsplashApi
 import com.codinginflow.imagesearchapp.api.UnsplashApi.Companion.BASE_HOST
-import com.codinginflow.imagesearchapp.api.UnsplashApi.Companion.BASE_URL
 import com.codinginflow.imagesearchapp.api.UnsplashApi.Companion.UNSPLASH_STARTING_PAGE_INDEX
 import com.codinginflow.imagesearchapp.api.UnsplashResponse
 import io.ktor.client.*
@@ -25,19 +24,19 @@ class KtorUnsplashPagingSource(
         return try {
             Log.d("nikTest", "query: $query page: $position per_page: ${params.loadSize}")
             val response = httpClient.get<UnsplashResponse> {
-                url{
-                    protocol=URLProtocol.HTTPS
-                    host=BASE_HOST
+                url {
+                    protocol = URLProtocol.HTTPS
+                    host = BASE_HOST
                     path("search/photos")
-                    parameters.append("query",query)
-                    parameters.append("page",position.toString())
-                    parameters.append("per_page",params.loadSize.toString())
+                    parameters.append("query", query)
+                    parameters.append("page", position.toString())
+                    parameters.append("per_page", params.loadSize.toString())
 
                 }
                 contentType(ContentType.Application.Json)
-                headers{
+                headers {
                     append("Accept-Version", "v1")
-                    append( "Authorization", "Client-ID ${UnsplashApi.CLIENT_ID}")
+                    append("Authorization", "Client-ID ${UnsplashApi.CLIENT_ID}")
 
                 }
 
