@@ -1,16 +1,16 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        kotlinVersion = '1.6.10'
-        navigationVersion = '2.3.0'
-        hiltVersion = '2.42'
+        kotlinVersion = '1.8.22'
+        navigationVersion = '2.6.0'
+        hiltVersion = '2.44'
     }
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.0.2"
+        classpath 'com.android.tools.build:gradle:8.0.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
 
@@ -34,19 +34,19 @@ task clean(type: Delete) {
 ext {
     // Sdk and tools
     minSdkVersion = 24
-    targetSdkVersion = 31
-    compileSdkVersion = 31
+    targetSdkVersion = 34
+    compileSdkVersion = 34
 
     // App dependencies
-    appCompatVersion = '1.2.0'
-    constraintLayoutVersion = '1.1.3'
-    espressoVersion = '3.2.0'
+    appCompatVersion = '1.6.1'
+    constraintLayoutVersion = '2.1.4'
+    espressoVersion = '3.5.1'
     glideVersion = '4.11.0'
     hiltAndroidXVersion = '1.0.0-alpha02'
-    junitVersion = '4.13'
-    ktxVersion = '1.3.1'
+    junitVersion = '4.13.2'
+    ktxVersion = '1.10.1'
     pagingVersion = '3.1.1'
     retrofitVersion = '2.9.0'
-    testExtJunitVersion = '1.1.1'
+    testExtJunitVersion = '1.1.5'
     ktor_version = '2.2.4'
 }
