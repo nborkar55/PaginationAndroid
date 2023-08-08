@@ -1,6 +1,8 @@
 package com.codinginflow.imagesearchapp.data
 
+import android.util.Log
 import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import com.codinginflow.imagesearchapp.api.UnsplashApi
 import retrofit2.HttpException
 import java.io.IOException
@@ -16,6 +18,7 @@ class UnsplashPagingSource(
         val position = params.key ?: UNSPLASH_STARTING_PAGE_INDEX
 
         return try {
+            Log.d("nikTest", "query: $query page: $position per_page: ${params.loadSize}")
             val response = unsplashApi.searchPhotos(query, position, params.loadSize)
             val photos = response.results
 
@@ -28,6 +31,13 @@ class UnsplashPagingSource(
             LoadResult.Error(exception)
         } catch (exception: HttpException) {
             LoadResult.Error(exception)
+        }
+    }
+
+    override fun getRefreshKey(state: PagingState<Int, UnsplashPhoto>): Int? {
+        return state.anchorPosition?.let {
+            state.closestPageToPosition(it)?.prevKey?.plus(1)
+                ?: state.closestPageToPosition(it)?.nextKey?.minus(1)
         }
     }
 }
