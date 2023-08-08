@@ -1,11 +1,11 @@
-package com.codinginflow.imagesearchapp.ui.gallery
+package com.example.imagesearchapp.ui.gallery
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
-import com.codinginflow.imagesearchapp.data.UnsplashRepository
+import com.example.imagesearchapp.data.UnsplashRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.ktor.client.*
 import javax.inject.Inject

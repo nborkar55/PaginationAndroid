@@ -1,4 +1,4 @@
-package com.codinginflow.imagesearchapp.ui.gallery
+package com.example.imagesearchapp.ui.gallery
 
 import android.os.Bundle
 import android.view.Menu
@@ -14,9 +14,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
-import com.codinginflow.imagesearchapp.R
-import com.codinginflow.imagesearchapp.data.UnsplashPhoto
-import com.codinginflow.imagesearchapp.databinding.FragmentGalleryBinding
+import com.example.imagesearchapp.R
+import com.example.imagesearchapp.data.UnsplashPhoto
+import com.example.imagesearchapp.databinding.FragmentGalleryBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

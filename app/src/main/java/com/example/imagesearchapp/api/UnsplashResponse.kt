@@ -1,6 +1,6 @@
-package com.codinginflow.imagesearchapp.api
+package com.example.imagesearchapp.api
 
-import com.codinginflow.imagesearchapp.data.UnsplashPhoto
+import com.example.imagesearchapp.data.UnsplashPhoto
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

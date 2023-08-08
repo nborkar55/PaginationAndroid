@@ -1,4 +1,4 @@
-package com.codinginflow.imagesearchapp.ui.details
+package com.example.imagesearchapp.ui.details
 
 import android.content.Intent
 import android.graphics.drawable.Drawable
@@ -13,8 +13,8 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.codinginflow.imagesearchapp.R
-import com.codinginflow.imagesearchapp.databinding.FragmentDetailsBinding
+import com.example.imagesearchapp.R
+import com.example.imagesearchapp.databinding.FragmentDetailsBinding
 
 class DetailsFragment : Fragment(R.layout.fragment_details) {
 

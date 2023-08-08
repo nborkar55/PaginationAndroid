@@ -1,4 +1,4 @@
-package com.codinginflow.imagesearchapp.data
+package com.example.imagesearchapp.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

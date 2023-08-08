@@ -9,7 +9,7 @@ android {
     compileSdkVersion rootProject.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.codinginflow.imagesearchapp"
+        applicationId "com.example.imagesearchapp"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
@@ -39,7 +39,7 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17
     }
-    namespace 'com.codinginflow.imagesearchapp'
+    namespace 'com.example.imagesearchapp'
 }
 
 dependencies {
