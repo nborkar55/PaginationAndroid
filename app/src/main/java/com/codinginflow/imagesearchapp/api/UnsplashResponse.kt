@@ -8,4 +8,4 @@ import kotlinx.serialization.Serializable
 data class UnsplashResponse(
     @SerialName("results")
     val results: List<UnsplashPhoto>
-):java.io.Serializable
+)

@@ -13,7 +13,7 @@ data class UnsplashPhoto(
     val urls: UnsplashPhotoUrls,
     @SerialName("user")
     val user: UnsplashUser
-) : java.io.Serializable {
+):java.io.Serializable {
     @Serializable
     data class UnsplashPhotoUrls(
         @SerialName("raw")
@@ -26,7 +26,7 @@ data class UnsplashPhoto(
         val small: String,
         @SerialName("thumb")
         val thumb: String
-    ) : java.io.Serializable
+    )
 
     @Serializable
     data class UnsplashUser(
@@ -34,7 +34,7 @@ data class UnsplashPhoto(
         val name: String,
         @SerialName("username")
         val username: String
-    ) : java.io.Serializable {
+    ) {
         val attributionUrl get() = "https://unsplash.com/$username?utm_source=ImageSearchApp&utm_medium=referral"
     }
 }

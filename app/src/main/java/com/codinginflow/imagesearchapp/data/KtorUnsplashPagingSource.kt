@@ -8,6 +8,7 @@ import com.codinginflow.imagesearchapp.api.UnsplashApi.Companion.BASE_HOST
 import com.codinginflow.imagesearchapp.api.UnsplashApi.Companion.UNSPLASH_STARTING_PAGE_INDEX
 import com.codinginflow.imagesearchapp.api.UnsplashResponse
 import io.ktor.client.*
+import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 import retrofit2.HttpException
@@ -23,7 +24,7 @@ class KtorUnsplashPagingSource(
 
         return try {
             Log.d("nikTest", "query: $query page: $position per_page: ${params.loadSize}")
-            val response = httpClient.get<UnsplashResponse> {
+            val response = httpClient.get {
                 url {
                     protocol = URLProtocol.HTTPS
                     host = BASE_HOST
@@ -40,7 +41,7 @@ class KtorUnsplashPagingSource(
 
                 }
 
-            }
+            }.body<UnsplashResponse>()
             val photos = response.results
 
             LoadResult.Page(

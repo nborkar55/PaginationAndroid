@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
@@ -8,7 +7,7 @@ apply plugin: 'org.jetbrains.kotlin.plugin.serialization'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion "29.0.3"
+    buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "com.codinginflow.imagesearchapp"
@@ -79,6 +78,8 @@ dependencies {
     implementation "io.ktor:ktor-client-serialization:$ktor_version"
     implementation "io.ktor:ktor-client-logging:$ktor_version"
     implementation "ch.qos.logback:logback-classic:1.2.5"
+    implementation("io.ktor:ktor-serialization-gson:$ktor_version")
+    implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
 
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2"
 }
