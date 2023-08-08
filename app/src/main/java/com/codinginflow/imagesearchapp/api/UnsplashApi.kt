@@ -9,7 +9,10 @@ interface UnsplashApi {
 
     companion object {
         const val BASE_URL = "https://api.unsplash.com/"
+        const val BASE_HOST = "api.unsplash.com/"
         const val CLIENT_ID = BuildConfig.UNSPLASH_ACCESS_KEY
+        const val UNSPLASH_STARTING_PAGE_INDEX = 1
+
     }
 
     @Headers("Accept-Version: v1", "Authorization: Client-ID $CLIENT_ID")
