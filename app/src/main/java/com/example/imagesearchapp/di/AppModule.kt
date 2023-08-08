@@ -1,18 +1,20 @@
 package com.example.imagesearchapp.di
 
 import com.example.imagesearchapp.api.UnsplashApi
+import com.example.imagesearchapp.interceptor.KtorNetworkInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.ktor.client.*
-import io.ktor.client.engine.android.*
+import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.kotlinx.serializer.*
 import io.ktor.client.plugins.logging.*
 import io.ktor.serialization.gson.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -35,7 +37,15 @@ object AppModule {
     @Provides
     @Singleton
     fun provideKtorClient(): HttpClient {
-        return HttpClient(Android) {
+        return HttpClient(OkHttp) {
+            engine {
+                config {
+                    connectTimeout(10, TimeUnit.SECONDS)
+                    readTimeout(30, TimeUnit.SECONDS)
+                    writeTimeout(30, TimeUnit.SECONDS)
+                }
+                addInterceptor(KtorNetworkInterceptor())
+            }
             install(Logging) {
                 level = LogLevel.ALL
             }
