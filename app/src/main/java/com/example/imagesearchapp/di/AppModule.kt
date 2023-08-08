@@ -1,6 +1,7 @@
 package com.example.imagesearchapp.di
 
 import com.example.imagesearchapp.api.UnsplashApi
+import com.example.imagesearchapp.interceptor.KtorAuthInterceptor
 import com.example.imagesearchapp.interceptor.KtorNetworkInterceptor
 import dagger.Module
 import dagger.Provides
@@ -44,7 +45,8 @@ object AppModule {
                     readTimeout(30, TimeUnit.SECONDS)
                     writeTimeout(30, TimeUnit.SECONDS)
                 }
-                addInterceptor(KtorNetworkInterceptor())
+                addNetworkInterceptor(KtorNetworkInterceptor())
+                addInterceptor(KtorAuthInterceptor())
             }
             install(Logging) {
                 level = LogLevel.ALL
