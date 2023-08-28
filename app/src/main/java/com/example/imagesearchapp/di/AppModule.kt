@@ -3,6 +3,7 @@ package com.example.imagesearchapp.di
 import com.example.imagesearchapp.api.UnsplashApi
 import com.example.imagesearchapp.interceptor.KtorAuthInterceptor
 import com.example.imagesearchapp.interceptor.KtorNetworkInterceptor
+import com.example.imagesearchapp.util.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +27,7 @@ object AppModule {
     @Singleton
     fun provideRetrofit(): Retrofit =
         Retrofit.Builder()
-            .baseUrl(UnsplashApi.BASE_URL)
+            .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

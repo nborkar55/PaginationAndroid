@@ -4,10 +4,10 @@ import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.imagesearchapp.api.UnsplashApi
-import com.example.imagesearchapp.api.UnsplashApi.Companion.BASE_HOST
 import com.example.imagesearchapp.api.UnsplashApi.Companion.UNSPLASH_STARTING_PAGE_INDEX
 import com.example.imagesearchapp.data.model.UnsplashPhoto
 import com.example.imagesearchapp.data.model.UnsplashResponse
+import com.example.imagesearchapp.util.Constants
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*
@@ -28,7 +28,7 @@ class KtorUnsplashPagingSource(
             val response = httpClient.get {
                 url {
                     protocol = URLProtocol.HTTPS
-                    host = BASE_HOST
+                    host = Constants.BASE_HOST
                     path("search/photos")
                     parameters.append("query", query)
                     parameters.append("page", position.toString())
