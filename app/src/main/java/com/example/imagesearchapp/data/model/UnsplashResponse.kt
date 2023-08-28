@@ -1,6 +1,5 @@
-package com.example.imagesearchapp.api
+package com.example.imagesearchapp.data.model
 
-import com.example.imagesearchapp.data.UnsplashPhoto
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

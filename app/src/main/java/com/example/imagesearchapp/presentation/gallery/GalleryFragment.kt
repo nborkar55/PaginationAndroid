@@ -1,4 +1,4 @@
-package com.example.imagesearchapp.ui.gallery
+package com.example.imagesearchapp.presentation.gallery
 
 import android.os.Bundle
 import android.view.Menu
@@ -15,7 +15,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.example.imagesearchapp.R
-import com.example.imagesearchapp.data.UnsplashPhoto
+import com.example.imagesearchapp.data.model.UnsplashPhoto
 import com.example.imagesearchapp.databinding.FragmentGalleryBinding
 import dagger.hilt.android.AndroidEntryPoint
 

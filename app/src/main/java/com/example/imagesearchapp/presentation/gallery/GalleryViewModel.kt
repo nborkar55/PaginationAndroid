@@ -1,31 +1,22 @@
-package com.example.imagesearchapp.ui.gallery
+package com.example.imagesearchapp.presentation.gallery
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
-import androidx.lifecycle.viewModelScope
-import androidx.paging.cachedIn
-import com.example.imagesearchapp.data.UnsplashRepository
+import com.example.imagesearchapp.domain.usecase.SearchResultUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.ktor.client.*
 import javax.inject.Inject
 
 @HiltViewModel
 class GalleryViewModel @Inject constructor(
-    private val repository: UnsplashRepository,
+    private val searchResultUseCase: SearchResultUseCase,
     state: SavedStateHandle
 ) : ViewModel() {
 
     private val currentQuery = state.getLiveData(CURRENT_QUERY, DEFAULT_QUERY)
 
     val photos = currentQuery.switchMap { queryString ->
-        val ktorEnabled = true
-        if (ktorEnabled) {
-            repository.getKtorSearchResults(queryString).cachedIn(viewModelScope)
-        } else {
-            repository.getSearchResults(queryString).cachedIn(viewModelScope)
-        }
-
+        searchResultUseCase(queryString)
     }
 
     fun searchPhotos(query: String) {

@@ -6,7 +6,8 @@ import androidx.paging.PagingState
 import com.example.imagesearchapp.api.UnsplashApi
 import com.example.imagesearchapp.api.UnsplashApi.Companion.BASE_HOST
 import com.example.imagesearchapp.api.UnsplashApi.Companion.UNSPLASH_STARTING_PAGE_INDEX
-import com.example.imagesearchapp.api.UnsplashResponse
+import com.example.imagesearchapp.data.model.UnsplashPhoto
+import com.example.imagesearchapp.data.model.UnsplashResponse
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*

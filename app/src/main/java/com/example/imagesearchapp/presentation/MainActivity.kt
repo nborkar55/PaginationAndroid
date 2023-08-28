@@ -1,4 +1,4 @@
-package com.example.imagesearchapp
+package com.example.imagesearchapp.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

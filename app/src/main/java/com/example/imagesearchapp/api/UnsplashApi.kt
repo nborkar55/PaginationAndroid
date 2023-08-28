@@ -1,6 +1,7 @@
 package com.example.imagesearchapp.api
 
 import com.example.imagesearchapp.BuildConfig
+import com.example.imagesearchapp.data.model.UnsplashResponse
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query

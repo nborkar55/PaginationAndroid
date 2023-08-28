@@ -1,4 +1,4 @@
-package com.example.imagesearchapp.data
+package com.example.imagesearchapp.data.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

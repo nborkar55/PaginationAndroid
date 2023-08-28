@@ -1,4 +1,4 @@
-package com.example.imagesearchapp.ui.details
+package com.example.imagesearchapp.presentation.details
 
 import android.content.Intent
 import android.graphics.drawable.Drawable
