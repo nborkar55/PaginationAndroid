@@ -1,30 +1,39 @@
 package com.example.imagesearchapp.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.imagesearchapp.R
+import com.example.imagesearchapp.databinding.ActivityMainBinding
+import com.example.imagesearchapp.presentation.adapters.MainAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private lateinit var navController: NavController
+
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var adapter: MainAdapter
+    private lateinit var viewModel: MainViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_main) as NavHostFragment
-        navController = navHostFragment.findNavController()
-        navController.setGraph(R.navigation.nav_graph)
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-    }
+        viewModel.getCountries()
+        viewModel.countries.observe(this) { response ->
+            response?.let {
+                binding.rvCountries.layoutManager = LinearLayoutManager(this)
+                adapter = MainAdapter(this, response)
+                binding.rvCountries.adapter = adapter
+            }?: run {
+                Log.d("MainActivity", "onCreate: response is null")
+            }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onSupportNavigateUp()
+        }
     }
 }
