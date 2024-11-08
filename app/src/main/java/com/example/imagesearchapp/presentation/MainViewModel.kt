@@ -1,6 +1,5 @@
 package com.example.imagesearchapp.presentation
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,9 +25,7 @@ class MainViewModel @Inject constructor(private val useCase: MainUseCase) : View
 
     fun getCountries() {
         viewModelScope.launch {
-
-            val result = useCase.getCountries()
-
+            useCase.getCountries(_countries)
         }
     }
 }

@@ -1,6 +1,8 @@
 package com.example.imagesearchapp.domain
 
+import androidx.lifecycle.MutableLiveData
 import com.example.imagesearchapp.data.MainRepository
+import com.example.imagesearchapp.data.model.Contries
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -13,7 +15,7 @@ import javax.inject.Singleton
 @Singleton
 class MainUseCase @Inject constructor(val repository: MainRepository) {
 
-    fun getCountries() = repository.getCountries()
+    fun getCountries(_countries: MutableLiveData<List<Contries>?>) = repository.getCountries(_countries)
 
 
 

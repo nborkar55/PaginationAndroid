@@ -1,12 +1,14 @@
 package com.example.imagesearchapp.presentation.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imagesearchapp.data.model.Contries
 import com.example.imagesearchapp.databinding.ItemCountryBinding
+import com.example.imagesearchapp.presentation.MainActivity2
 
 /**
  * @author nikhil borkar <nikhil.borkar@lenskart.in>
@@ -29,7 +31,12 @@ class MainAdapter(val context: Context, private val countries: List<Contries>): 
 
         holder.binding.tvCountryName.setOnClickListener {
             Toast.makeText(context, countries[position].name.common, Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, MainActivity2::class.java)
+            intent.putExtra("flag_url", countries[position].flags.png)
+            intent.putExtra("country_name", countries[position].name.common)
+            context.startActivity(intent)
         }
+
     }
 
     override fun getItemCount(): Int = countries.size

@@ -24,7 +24,7 @@ class ApiModule {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .client(OkHttpClient())
-            .baseUrl("https://restcountries.com/v3.1/")
+            .baseUrl("https://restcountries.com/")
             .build()
     }
 

@@ -1,5 +1,7 @@
 package com.example.imagesearchapp.data
 
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.example.imagesearchapp.api.ApiClient
 import com.example.imagesearchapp.data.model.Contries
 import retrofit2.Call
@@ -14,9 +16,9 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class MainRepository @Inject constructor(private val apiClient: ApiClient) {
+class MainRepository @Inject constructor(private val apiClient: ApiClient,) {
 
-    fun getCountries(): ResponseState.Success<List<Contries>>  {
+    fun getCountries(_countries: MutableLiveData<List<Contries>?>)  {
         val result = apiClient.getCountries()
         result.enqueue(
             object : retrofit2.Callback<List<Contries>?> {
@@ -24,11 +26,11 @@ class MainRepository @Inject constructor(private val apiClient: ApiClient) {
                     call: Call<List<Contries>?>,
                     response: Response<List<Contries>?>
                 ) {
-                    response.body()
+                    _countries.value = response.body()
                 }
 
                 override fun onFailure(call: Call<List<Contries>?>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Log.d("MainRepository", "onFailure: ${t.message}")
                 }
             }
 

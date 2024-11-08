@@ -11,6 +11,6 @@ import retrofit2.http.GET
  * Created 08 November, 2024
  */
 interface ApiClient {
-    @GET("/all")
+    @GET("/v3.1/all")
     fun getCountries(): Call<List<Contries>?>
 }
