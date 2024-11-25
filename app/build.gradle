@@ -18,6 +18,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "UNSPLASH_ACCESS_KEY", unsplash_access_key)
+        buildConfigField("String", "API_KEY", api_key)
     }
 
     buildTypes {
@@ -40,6 +41,7 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17
     }
+
     namespace 'com.example.imagesearchapp'
 }
 
